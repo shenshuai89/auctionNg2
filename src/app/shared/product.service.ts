@@ -19,6 +19,9 @@ export class ProductService {
     new Comment(4, 2, '2017-6-25 14:10:10', 'tom', 2, '东西还行')
   ]
 
+  getAllCategories():string[]{
+    return ["电子产品","硬件设备","图书"]
+  }
   getProducts(): Product[]{
     return this.products;
   }
@@ -28,6 +31,7 @@ export class ProductService {
   getCommentsForProductId(id:number):Comment[]{
     return this.comments.filter((comment) => comment.productId == id )
   }
+
 }
 
 export class Product {
