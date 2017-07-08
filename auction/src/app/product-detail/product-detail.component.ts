@@ -20,9 +20,13 @@ export class ProductDetailComponent implements OnInit{
 
   ngOnInit() {
     let productId:number = this.routeInfo.snapshot.params["productId"]
-    this.product = this.productService.getProduct(productId);
-
-    this.comments = this.productService.getCommentsForProductId(productId)
+    // 下面两个服务中的方法是通过http请求数据执行，http是一个异步的过程，刚开始时拿不到product数据，就会报错
+    this.productService.getProduct(productId).subscribe(
+      product => this.product = product
+    );
+    this.productService.getCommentsForProductId(productId).subscribe(
+      comments => this.comments = comments
+    )
   }
 
   addComment(){
