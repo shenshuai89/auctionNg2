@@ -52,7 +52,7 @@ app.get('/api/products', function (req, res) {
     if (params.price && result.length > 0) {
         result = result.filter(function (p) { return p.price <= parseInt(params.price); });
     }
-    if (params.category !== "-1" && result.length > 0) {
+    if (params.category && params.category !== "-1" && result.length > 0) {
         result = result.filter(function (p) { return p.categories.indexOf(params.category) !== -1; });
     }
     res.json(result);
